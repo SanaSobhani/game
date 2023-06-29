@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.BoxBlur?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane fx:id="ancherPane" prefHeight="484.0" prefWidth="832.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.finalgame.map.Map4">
+   <children>
+      <ImageView fx:id="backGround" fitHeight="542.0" fitWidth="879.0" layoutX="-41.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Captured.JPG" />
+         </image>
+         <effect>
+            <BoxBlur />
+         </effect>
+      </ImageView>
+      <ImageView fx:id="sodier" fitHeight="85.0" fitWidth="59.0" layoutX="218.0" layoutY="69.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../../Users/ASUS/Desktop/clashimages%20(1)/soldier22.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="sandCastle" fitHeight="279.0" fitWidth="490.0" layoutX="10.0" layoutY="86.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../../Users/ASUS/Desktop/clashimages%20(1)/sandCastle2.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="canonImage2" fitHeight="160.0" fitWidth="195.0" layoutX="523.0" layoutY="173.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../../Users/ASUS/Desktop/clashimages%20(1)/canonOriginal.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="canonImage1" fitHeight="186.0" fitWidth="204.0" layoutX="384.0" layoutY="285.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../../Users/ASUS/Desktop/clashimages%20(1)/canonOriginal.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="canonImage3" fitHeight="172.0" fitWidth="195.0" layoutX="101.0" layoutY="270.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../../Users/ASUS/Desktop/clashimages%20(1)/canonOriginal.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

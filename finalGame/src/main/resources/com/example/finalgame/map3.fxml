@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.BoxBlur?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="ancherPane" prefHeight="494.0" prefWidth="851.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.finalgame.map.Map3">
+   <children>
+      <ImageView fx:id="backGround" fitHeight="593.0" fitWidth="861.0" layoutX="-9.0" layoutY="-90.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@moon-sky-night-background-asset-game-2d-futuristic-generative-ai.jpg" />
+         </image>
+         <effect>
+            <BoxBlur />
+         </effect>
+      </ImageView>
+      <ImageView fx:id="castleImage" fitHeight="486.0" fitWidth="329.0" layoutX="200.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="ufoImage1" fitHeight="98.0" fitWidth="214.0" layoutX="23.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="ufoImage2" fitHeight="140.0" fitWidth="308.0" layoutX="468.0" layoutY="155.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="deathStar" fitHeight="146.0" fitWidth="120.0" layoutX="644.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true" />
+   </children>
+</AnchorPane>
