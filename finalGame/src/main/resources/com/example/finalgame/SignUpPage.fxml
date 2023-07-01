@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.BoxBlur?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="ancherPane" prefHeight="355.0" prefWidth="547.0" style="-fx-background-color: #3c3b3b;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.finalgame.pages.SignUpPage">
+   <children>
+      <ImageView fx:id="backGround" fitHeight="408.0" fitWidth="642.0" layoutX="-22.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@backGround.jpg" />
+         </image>
+         <effect>
+            <BoxBlur iterations="2" />
+         </effect>
+      </ImageView>
+      <TextField fx:id="idField" layoutX="410.0" layoutY="96.0" promptText="ID" style="-fx-background-radius: 50;" />
+      <Text fx:id="IDTxt" layoutX="14.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SET AN ID" wrappingWidth="142.99999898672104">
+         <font>
+            <Font name="Bodoni MT Black" size="22.0" />
+         </font>
+      </Text>
+      <Text fx:id="passWordTxt" layoutX="14.0" layoutY="236.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SET A PASSWORD" wrappingWidth="225.99999898672104">
+         <font>
+            <Font name="Bodoni MT Black" size="18.0" />
+         </font>
+      </Text>
+      <PasswordField fx:id="passWordField" layoutX="410.0" layoutY="215.0" promptText="pass word" style="-fx-background-radius: 50;" />
+      <Button fx:id="signUpButton" layoutX="203.0" layoutY="300.0" mnemonicParsing="false" onAction="#signUp" prefHeight="31.0" prefWidth="214.0" style="-fx-background-color: #c9c7c7; -fx-background-radius: 50;" text="Sign Up">
+         <font>
+            <Font name="Arial Bold" size="24.0" />
+         </font>
+      </Button>
+      <Text fx:id="titleTxt" layoutX="168.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SIGN UP PAGE">
+         <font>
+            <Font name="Bodoni MT Black Italic" size="34.0" />
+         </font>
+      </Text>
+      <Text fx:id="errorTxt" fill="#ff0c0c" layoutX="467.0" layoutY="327.0" strokeType="OUTSIDE" strokeWidth="0.0">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Text>
+      <Text fx:id="msgTxt" fill="#37eb00" layoutX="33.0" layoutY="328.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" ">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>
