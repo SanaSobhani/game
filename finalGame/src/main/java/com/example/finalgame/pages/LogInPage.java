@@ -1,6 +1,7 @@
 package com.example.finalgame.pages;
 
 import com.example.finalgame.player.Player;
+import com.example.finalgame.player.PlayerController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -37,7 +38,10 @@ public class LogInPage {
         if(!Player.logIn(passWordField.getText()))
             errorTxt.setText("please sign up");
         else
+        {
             System.out.println("t");
+            PlayerController.setPassWord(passWordField.getText());
+        }
     }
 
 }

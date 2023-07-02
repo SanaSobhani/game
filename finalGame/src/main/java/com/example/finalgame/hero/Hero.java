@@ -3,7 +3,7 @@ package com.example.finalgame.hero;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-public abstract class Hero extends Image {
+public abstract class Hero extends Image{
     private int AttackPower;
     private int levelOfHealth;
     public Hero(int AttackPower,int levelOfHealth,String filePath){

@@ -1,9 +1,6 @@
 package com.example.finalgame.pages;
 
-import com.example.finalgame.map.Map1;
-import com.example.finalgame.map.Map2;
-import com.example.finalgame.map.Map3;
-import com.example.finalgame.map.Map4;
+import com.example.finalgame.map.*;
 import com.example.finalgame.player.Player;
 import com.example.finalgame.player.PlayerController;
 import javafx.event.ActionEvent;
@@ -80,23 +77,25 @@ public class AllMaps {
     @FXML
     void selection1(ActionEvent event) throws SQLException {
         Player.dataBase.saveMapToDataBase(Map2.getMap2().getId(), PlayerController.getPassWord());
+        MapController.setMapPointer(new Map2());
     }
 
     @FXML
     void selection2(ActionEvent event) throws SQLException {
         Player.dataBase.saveMapToDataBase(Map3.getMap3().getId(), PlayerController.getPassWord());
-
+        MapController.setMapPointer(new Map3());
     }
 
     @FXML
     void selection3(ActionEvent event) throws SQLException {
         Player.dataBase.saveMapToDataBase(Map4.getMap4().getId(), PlayerController.getPassWord());
-
+        MapController.setMapPointer(new Map4());
     }
 
     @FXML
     void selection4(ActionEvent event) throws SQLException {
         Player.dataBase.saveMapToDataBase(Map1.getMap1().getId(), PlayerController.getPassWord());
+        MapController.setMapPointer(new Map1());
     }
 
 }

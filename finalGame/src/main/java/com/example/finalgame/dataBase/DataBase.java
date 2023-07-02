@@ -27,9 +27,9 @@ public class DataBase {
         Statement statement = connection.prepareStatement(sqlCmd); // need statement to prepare command
         statement.execute(sqlCmd); // do the command
     }
-    public void saveMapToDataBase(int id) throws SQLException {
-        String sqlCmd =String.format("INSERT INTO `players info` (`mapid`) VALUES ('%d')" , id);
-        Statement statement = connection.prepareStatement(sqlCmd); // need statement to prepare command
+    public void saveMapToDataBase(int id,String passWord) throws SQLException {
+       String sqlCmd =String.format("UPDATE playersinfo SET mapid = '%d' WHERE password = %s" , id,passWord);
+       Statement statement = connection.prepareStatement(sqlCmd); // need statement to prepare command
         statement.execute(sqlCmd); // do the command
     }
     public void saveLevelToDataBase(int level) throws SQLException {
