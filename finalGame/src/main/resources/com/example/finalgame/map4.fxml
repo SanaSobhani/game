@@ -41,5 +41,9 @@
             <Font name="Bodoni MT Bold Italic" size="17.0" />
          </font>
       </Button>
+      <ImageView fx:id="blackBall4" fitHeight="7.0" fitWidth="10.0" layoutX="295.0" layoutY="78.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="blackBall3" fitHeight="22.0" fitWidth="24.0" layoutX="287.0" layoutY="271.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="blackBall1" fitHeight="22.0" fitWidth="24.0" layoutX="567.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="blackBall2" fitHeight="22.0" fitWidth="24.0" layoutX="697.0" layoutY="179.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

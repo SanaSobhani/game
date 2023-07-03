@@ -18,7 +18,7 @@
          </effect>
       </ImageView>
       <ImageView fx:id="castleImage" fitHeight="486.0" fitWidth="329.0" layoutX="200.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="ufoImage1" fitHeight="98.0" fitWidth="214.0" layoutX="23.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="ufoImage1" fitHeight="98.0" fitWidth="214.0" layoutX="38.0" layoutY="67.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="334.0" AnchorPane.leftAnchor="38.0" AnchorPane.topAnchor="67.0" />
       <ImageView fx:id="ufoImage2" fitHeight="140.0" fitWidth="308.0" layoutX="468.0" layoutY="155.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="deathStar" fitHeight="146.0" fitWidth="120.0" layoutX="644.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true" />
       <Button fx:id="heroBtn" layoutX="14.0" layoutY="443.0" mnemonicParsing="false" onAction="#arrangeHeroes" style="-fx-background-radius: 100;" text="arrange heroes">
@@ -36,5 +36,8 @@
             <Font name="Bodoni MT Bold Italic" size="17.0" />
          </font>
       </Button>
+      <ImageView fx:id="blueRay" fitHeight="44.0" fitWidth="62.0" layoutX="702.0" layoutY="86.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="ufoRay2" fitHeight="69.0" fitWidth="120.0" layoutX="562.0" layoutY="243.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="ufoRay1" fitHeight="69.0" fitWidth="139.0" layoutX="99.0" layoutY="123.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

@@ -10,6 +10,7 @@ import com.example.finalgame.hero.Dragon;
 import com.example.finalgame.hero.StormTrooper;
 import com.example.finalgame.hero.Witch;
 import com.example.finalgame.pages.AllHeroes;
+import com.example.finalgame.thread.BuildingsAttack;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -53,7 +54,19 @@ public class Map1 extends Map implements Initializable {
 
     @FXML
     private Button backBtn;
+    @FXML
+    private ImageView blueRay2;
 
+    @FXML
+    private ImageView blueRay1;
+
+    @FXML
+    private ImageView redBall;
+    //======================================Thread==========================================
+    private BuildingsAttack attack;
+    private BuildingsAttack attack2;
+    private BuildingsAttack attack3;
+    //=========================================================================================
     @FXML
     void arrangeHeroes(ActionEvent event) {
         for(int i = 0; i< AllHeroes.getStormCounter(); i++){
@@ -106,7 +119,19 @@ public class Map1 extends Map implements Initializable {
 
     @FXML
     void start(ActionEvent event) {
-
+        attack.start();
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        attack2.start();
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        attack3.start();
     }
     public static Map1 getMap1()
     {
@@ -122,10 +147,14 @@ public class Map1 extends Map implements Initializable {
         deathStar1.setImage(deathStar);
         DeathStar deathStar3 = new DeathStar();
         deathStar2.setImage(deathStar3);
+        //*******************************
         getBuildings().add(watchTower1);
         getBuildings().add(deathStar3);
         getBuildings().add(deathStar);
-        System.out.println(this.getId());
+        //****************************
+        attack = new BuildingsAttack(watchTower1,redBall);
+        attack2 = new BuildingsAttack(deathStar3,blueRay2);
+        attack3 = new BuildingsAttack(deathStar,blueRay1);
     }
 }
 

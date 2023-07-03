@@ -4,6 +4,6 @@ import com.example.finalgame.HelloApplication;
 
 public class Canon extends DefensiveBuilding{
     public Canon(){
-        super(4,8,new HelloApplication().getClass().getResource("B.canonOriginal.png").toString());
+        super(4,8,new HelloApplication().getClass().getResource("B.canonOriginal.png").toString(),new HelloApplication().getClass().getResource("blackBall.png").toString());
     }
 }

@@ -35,5 +35,8 @@
             <Font name="Bodoni MT Bold Italic" size="17.0" />
          </font>
       </Button>
+      <ImageView fx:id="blueRay2" fitHeight="57.0" fitWidth="79.0" layoutX="499.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="blueRay1" fitHeight="74.0" fitWidth="117.0" layoutX="618.0" layoutY="222.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="redBall" fitHeight="13.0" fitWidth="9.0" layoutX="247.0" layoutY="117.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

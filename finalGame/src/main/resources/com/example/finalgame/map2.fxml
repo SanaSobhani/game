@@ -16,7 +16,7 @@
       <ImageView fx:id="castleImg" fitHeight="483.0" fitWidth="484.0" layoutX="-32.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="canonImage1" fitHeight="240.0" fitWidth="310.0" layoutX="547.0" layoutY="270.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="canonImage2" fitHeight="209.0" fitWidth="213.0" layoutX="424.0" layoutY="190.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="canonImage3" fitHeight="240.0" fitWidth="310.0" layoutX="269.0" layoutY="270.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="canonImage3" fitHeight="240.0" fitWidth="310.0" layoutX="240.0" layoutY="273.0" pickOnBounds="true" preserveRatio="true" />
       <Button fx:id="heroBtn" layoutX="750.0" layoutY="14.0" mnemonicParsing="false" onAction="#arrangeHeroes" style="-fx-background-radius: 100;" text="arrange heroes">
          <font>
             <Font name="Bodoni MT Bold Italic" size="17.0" />
@@ -32,5 +32,8 @@
             <Font name="Bodoni MT Bold Italic" size="17.0" />
          </font>
       </Button>
+      <ImageView fx:id="blackBall2" fitHeight="24.0" fitWidth="23.0" layoutX="626.0" layoutY="207.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="blackBall1" fitHeight="33.0" fitWidth="23.0" layoutX="787.0" layoutY="281.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="blackBall3" fitHeight="33.0" fitWidth="23.0" layoutX="453.0" layoutY="281.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

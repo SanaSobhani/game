@@ -160,7 +160,7 @@ public class AllHeroes {
     @FXML
     void next(ActionEvent event) {
         try {
-            new HelloApplication().changeScene("map1.fxml");
+            new HelloApplication().changeScene("map4.fxml");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

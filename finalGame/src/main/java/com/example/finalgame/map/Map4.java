@@ -9,6 +9,7 @@ import com.example.finalgame.hero.Dragon;
 import com.example.finalgame.hero.StormTrooper;
 import com.example.finalgame.hero.Witch;
 import com.example.finalgame.pages.AllHeroes;
+import com.example.finalgame.thread.BuildingsAttack;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -51,6 +52,23 @@ public class Map4 extends Map implements Initializable {
     private ImageView imageView ;
     @FXML
     private Button backBtn;
+    @FXML
+    private ImageView blackBall4;
+
+    @FXML
+    private ImageView blackBall3;
+
+    @FXML
+    private ImageView blackBall1;
+
+    @FXML
+    private ImageView blackBall2;
+    //=============================Thread==============================================
+    BuildingsAttack attack1 ;
+    BuildingsAttack attack2;
+    BuildingsAttack attack3;
+    BuildingsAttack attack4;
+    //====================================================================================
     private static Map4 map4;
     public  Map4() {
         super(4);
@@ -111,7 +129,25 @@ public class Map4 extends Map implements Initializable {
 
     @FXML
     void start(ActionEvent event) {
-
+        attack1.start();
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        attack2.start();
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        attack3.start();
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        attack4.start();
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -123,10 +159,16 @@ public class Map4 extends Map implements Initializable {
         canonImage3.setImage(canon2);
         SandCastle sandCastle1 = new SandCastle();
         sandCastle.setImage(sandCastle1);
+        //*********************************
         getBuildings().add(canon1);
         getBuildings().add(canon);
         getBuildings().add(canon2);
         getBuildings().add(sandCastle1);
+        //**********************************
+        attack1 = new BuildingsAttack(canon,blackBall1);
+        attack2 = new BuildingsAttack(canon1,blackBall2);
+        attack3 = new BuildingsAttack(canon2,blackBall3);
+        attack4 = new BuildingsAttack(sandCastle1,blackBall4);
     }
 }
 
