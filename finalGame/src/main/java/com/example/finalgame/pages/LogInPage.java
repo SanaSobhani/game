@@ -1,5 +1,6 @@
 package com.example.finalgame.pages;
 
+import com.example.finalgame.HelloApplication;
 import com.example.finalgame.player.Player;
 import com.example.finalgame.player.PlayerController;
 import javafx.event.ActionEvent;
@@ -10,6 +11,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 
+import java.io.IOException;
 import java.sql.SQLException;
 
 public class LogInPage {
@@ -39,8 +41,12 @@ public class LogInPage {
             errorTxt.setText("please sign up");
         else
         {
-            System.out.println("t");
-            PlayerController.setPassWord(passWordField.getText());
+             PlayerController.setPassWord(passWordField.getText());
+            try {
+                new HelloApplication().changeScene("allMaps.fxml");
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 

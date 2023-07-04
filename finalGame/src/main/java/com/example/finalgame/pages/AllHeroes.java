@@ -1,11 +1,11 @@
 package com.example.finalgame.pages;
 
 import com.example.finalgame.HelloApplication;
-import com.example.finalgame.map.Map1;
-import com.example.finalgame.map.Map3;
-import com.example.finalgame.map.MapController;
+import com.example.finalgame.map.*;
+import com.example.finalgame.player.PlayerController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -13,9 +13,11 @@ import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.Optional;
+import java.util.ResourceBundle;
 
-public class AllHeroes {
+public class AllHeroes implements Initializable {
 
     @FXML
     private Button witch;
@@ -85,7 +87,8 @@ public class AllHeroes {
     private Alert alert = new Alert(Alert.AlertType.ERROR);
     @FXML
     private Text txt11;
-
+    @FXML
+    private Text enemy;
     @FXML
     private Button nextBtn;
    private static int witchCounter =0;
@@ -127,7 +130,7 @@ public class AllHeroes {
     //-------------------------------------------------------------------------------------------------------
     @FXML
     void chooseDarthVader(ActionEvent event) {
-        if(MapController.getMapPointer() instanceof Map1 || MapController.getMapPointer() instanceof Map3)
+        if(MapController.getMapPointer() instanceof Map1 || MapController.getMapPointer() instanceof Map3 || PlayerController.getPointer().getLevel()<5)
         {
             alert.setTitle("Alert!!!");
             alert.setContentText("you cant select this hero");
@@ -158,12 +161,27 @@ public class AllHeroes {
     }
 
     @FXML
-    void next(ActionEvent event) {
-        try {
+    void next(ActionEvent event) throws IOException {
+        if(MapController.getMapPointer() instanceof Map1)
+            new HelloApplication().changeScene("map1.fxml");
+        if(MapController.getMapPointer() instanceof Map2)
+            new HelloApplication().changeScene("map2.fxml");
+        if(MapController.getMapPointer() instanceof Map3)
+            new HelloApplication().changeScene("map3.fxml");
+        if(MapController.getMapPointer() instanceof Map4)
             new HelloApplication().changeScene("map4.fxml");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        this.enemy = new Text();
+        if(MapController.getMapPointer() instanceof Map1)
+            enemy.setText("attack to map1");
+        if(MapController.getMapPointer() instanceof Map2)
+            enemy.setText("attack to map2");
+        if(MapController.getMapPointer() instanceof Map3)
+            enemy.setText("attack to map3");
+        if(MapController.getMapPointer() instanceof Map4)
+            enemy.setText("attack to map4");
+    }
 }

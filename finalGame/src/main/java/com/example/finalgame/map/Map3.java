@@ -21,10 +21,14 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Map3 extends Map implements Initializable {
 
@@ -72,6 +76,7 @@ public class Map3 extends Map implements Initializable {
 
     @FXML
     private ImageView ufoRay1;
+    private Text determinationTxt = new Text();
     //=========================================Thread============================================================
     private BuildingsAttack attack ;
     private BuildingsAttack attack2;
@@ -79,10 +84,12 @@ public class Map3 extends Map implements Initializable {
     //============================================================================================================
    public static ArrayList<Thread> threads = new ArrayList<>();
    public static ArrayList<ImageView>buildings = new ArrayList<>();
+   ArrayList<ImageView>heroes = new ArrayList<>();
     @FXML
     void arrangeHeroes(ActionEvent event) {
         for(int i = 0; i< AllHeroes.getStormCounter(); i++){
             imageView = new ImageView();
+            heroes.add(imageView);
             StormTrooper stormTrooper = new StormTrooper();
             imageView.setImage(stormTrooper);
             ImageView fireView = new ImageView();
@@ -103,6 +110,7 @@ public class Map3 extends Map implements Initializable {
         }
         for(int i = 0;i<AllHeroes.getDarthCounter();i++){
             imageView = new ImageView();
+            heroes.add(imageView);
             DarthVader darthVader = new DarthVader();
             imageView.setImage(darthVader);
             ImageView fireView = new ImageView();
@@ -123,6 +131,7 @@ public class Map3 extends Map implements Initializable {
         }
         for(int i = 0;i<AllHeroes.getDragonCounter();i++){
             imageView = new ImageView();
+            heroes.add(imageView);
             Dragon dragon = new Dragon();
             imageView.setImage(dragon);
             ImageView fireView = new ImageView(dragon.getFire());
@@ -142,18 +151,21 @@ public class Map3 extends Map implements Initializable {
         }
         for(int i = 0;i<AllHeroes.getWitchCounter();i++){
             imageView = new ImageView();
+            heroes.add(imageView);
             Witch witch = new Witch();
             imageView.setImage(witch);
-            ImageView fireView = new ImageView();//***********************
+            ImageView fireView = new ImageView();        //*********set fire image view**************
             fireView.setImage(witch.getFire());
             fireView.setFitWidth(69);
-            fireView.setFitHeight(41);
+            fireView.setFitHeight(41);                   //********************************************
             MovingHeroes movingHeroes = new MovingHeroes(imageView,witch,this.buildings,fireView);
             threads.add(movingHeroes);
+            //**************** heroes lay out *************************************
             imageView.setFitHeight(100);
             imageView.setFitWidth(100);
             imageView.setLayoutX(300);
             imageView.setLayoutY(300);
+            //********************************************************************
             HelloApplication.root.getChildren().add(imageView);
             Draggable.makeDraggable(imageView);
             HelloApplication.root.getChildren().add(fireView);
@@ -164,7 +176,11 @@ public class Map3 extends Map implements Initializable {
 
     @FXML
     void back(ActionEvent event) {
-
+        try {
+            new HelloApplication().changeScene("allHeroes.fxml");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML
@@ -191,6 +207,19 @@ public class Map3 extends Map implements Initializable {
             throw new RuntimeException(e);
         }
         attack3.start();
+        //****************** determination *******************
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                if(heroes.size()==0) {
+                    determinationTxt.setText("You lost");
+                }
+                if(buildings.size()==0){
+                    determinationTxt.setText("You won");
+                }
+            }
+        },0,1000);
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -215,9 +244,9 @@ public class Map3 extends Map implements Initializable {
         buildings.add(deathStar);
         buildings.add(castleImage);
         //*******************************
-        attack = new BuildingsAttack(deathStar1,blueRay);
-        attack2 = new BuildingsAttack(ufo,ufoRay1);
-        attack3 = new BuildingsAttack(ufo2,ufoRay2);
+        attack = new BuildingsAttack(deathStar1,blueRay,heroes);
+        attack2 = new BuildingsAttack(ufo,ufoRay1,heroes);
+        attack3 = new BuildingsAttack(ufo2,ufoRay2,heroes);
 
 
     }

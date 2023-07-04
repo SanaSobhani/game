@@ -5,6 +5,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane fx:id="ancherPane" prefHeight="441.0" prefWidth="774.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.finalgame.map.Map1">
    <children>
@@ -38,5 +39,10 @@
       <ImageView fx:id="blueRay2" fitHeight="57.0" fitWidth="79.0" layoutX="499.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="blueRay1" fitHeight="74.0" fitWidth="117.0" layoutX="618.0" layoutY="222.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="redBall" fitHeight="13.0" fitWidth="9.0" layoutX="247.0" layoutY="117.0" pickOnBounds="true" preserveRatio="true" />
+      <Text fx:id="determinationTxt" fill="RED" layoutX="624.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" ">
+         <font>
+            <Font name="Bodoni MT Bold Italic" size="29.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

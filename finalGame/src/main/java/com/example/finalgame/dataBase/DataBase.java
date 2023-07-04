@@ -1,5 +1,8 @@
 package com.example.finalgame.dataBase;
 
+import com.example.finalgame.player.Player;
+import com.example.finalgame.player.PlayerController;
+
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -18,12 +21,12 @@ public class DataBase {
         statement.execute(sqlCmd); // do the command
     }
     public void saveWinsToDataBase(int numberOfWins) throws SQLException {
-        String sqlCmd =String.format("INSERT INTO `players info` (`numberofwins`) VALUES ('%d')" , numberOfWins);
+        String sqlCmd =String.format("UPDATE playersinfo SET numberofwins ='%d ' WHERE password = %s" , numberOfWins, PlayerController.getPassWord());
         Statement statement = connection.prepareStatement(sqlCmd); // need statement to prepare command
         statement.execute(sqlCmd); // do the command
     }
     public void saveLossesToDataBase(int numberOfLosses) throws SQLException {
-        String sqlCmd =String.format("INSERT INTO `players info` (`numberoflosses`) VALUES ('%d')" , numberOfLosses);
+        String sqlCmd =String.format("UPDATE playersinfo SET numberoflosses = 'd%' WHERE password = %s" , numberOfLosses,PlayerController.getPassWord());
         Statement statement = connection.prepareStatement(sqlCmd); // need statement to prepare command
         statement.execute(sqlCmd); // do the command
     }
@@ -33,7 +36,7 @@ public class DataBase {
         statement.execute(sqlCmd); // do the command
     }
     public void saveLevelToDataBase(int level) throws SQLException {
-        String sqlCmd =String.format("INSERT INTO `players info` (`level`) VALUES ('%d')" , level);
+        String sqlCmd =String.format("UPDATE players info SET level = '%d' WHERE password = %s" , level,PlayerController.getPassWord());
         Statement statement = connection.prepareStatement(sqlCmd); // need statement to prepare command
         statement.execute(sqlCmd); // do the command
     }

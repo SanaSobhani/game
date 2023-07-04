@@ -11,23 +11,29 @@ import com.example.finalgame.hero.Witch;
 import com.example.finalgame.pages.AllHeroes;
 import com.example.finalgame.thread.BuildingsAttack;
 import com.example.finalgame.thread.MovingHeroes;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.concurrent.Callable;
 
 public class Map4 extends Map implements Initializable {
 
     @FXML
     private AnchorPane ancherPane;
-
+    @FXML
+    private Text determinationTxt = new Text();
     @FXML
     private ImageView backGround;
 
@@ -73,6 +79,7 @@ public class Map4 extends Map implements Initializable {
     //====================================================================================
     public static ArrayList<Thread> threads = new ArrayList<>();
     public static ArrayList<ImageView>buildings = new ArrayList<>();
+    public static ArrayList<ImageView>heroes = new ArrayList<>();
     private static Map4 map4;
     public  Map4() {
         super(4);
@@ -87,6 +94,7 @@ public class Map4 extends Map implements Initializable {
     void arrangeHeroes(ActionEvent event) {
         for(int i = 0; i< AllHeroes.getStormCounter(); i++){
             imageView = new ImageView();
+            heroes.add(imageView);
             StormTrooper stormTrooper = new StormTrooper();
             imageView.setImage(stormTrooper);
             ImageView fireView = new ImageView();
@@ -107,6 +115,7 @@ public class Map4 extends Map implements Initializable {
         }
         for(int i = 0;i<AllHeroes.getDarthCounter();i++){
             imageView = new ImageView();
+            heroes.add(imageView);
             DarthVader darthVader = new DarthVader();
             imageView.setImage(darthVader);
             ImageView fireView = new ImageView();
@@ -127,6 +136,7 @@ public class Map4 extends Map implements Initializable {
         }
         for(int i = 0;i<AllHeroes.getDragonCounter();i++){
             imageView = new ImageView();
+            heroes.add(imageView);
             Dragon dragon = new Dragon();
             imageView.setImage(dragon);
             ImageView fireView = new ImageView(dragon.getFire());
@@ -146,6 +156,7 @@ public class Map4 extends Map implements Initializable {
         }
         for(int i = 0;i<AllHeroes.getWitchCounter();i++){
             imageView = new ImageView();
+            heroes.add(imageView);
             Witch witch = new Witch();
             imageView.setImage(witch);
             ImageView fireView = new ImageView();//***********************
@@ -167,7 +178,11 @@ public class Map4 extends Map implements Initializable {
     }
     @FXML
     void back(ActionEvent event) {
-
+        try {
+            new HelloApplication().changeScene("allHeroes.fxml");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML
@@ -200,6 +215,19 @@ public class Map4 extends Map implements Initializable {
             throw new RuntimeException(e);
         }
         attack4.start();
+        //****************** determination *******************
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                if(heroes.size()==0) {
+                    determinationTxt.setText("You lost");
+                }
+                if(buildings.size()==0){
+                    determinationTxt.setText("You won");
+                }
+            }
+        },0,1000);
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -217,10 +245,10 @@ public class Map4 extends Map implements Initializable {
         getBuildings().add(canon2);
         getBuildings().add(sandCastle1);
         //**********************************
-        attack1 = new BuildingsAttack(canon,blackBall1);
-        attack2 = new BuildingsAttack(canon1,blackBall2);
-        attack3 = new BuildingsAttack(canon2,blackBall3);
-        attack4 = new BuildingsAttack(sandCastle1,blackBall4);
+        attack1 = new BuildingsAttack(canon,blackBall1,heroes);
+        attack2 = new BuildingsAttack(canon1,blackBall2,heroes);
+        attack3 = new BuildingsAttack(canon2,blackBall3,heroes);
+        attack4 = new BuildingsAttack(sandCastle1,blackBall4,heroes);
         //*************************************
         buildings.add(sandCastle);
         buildings.add(canonImage1);

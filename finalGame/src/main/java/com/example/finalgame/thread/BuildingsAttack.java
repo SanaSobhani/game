@@ -4,18 +4,25 @@ import com.example.finalgame.HelloApplication;
 import com.example.finalgame.building.*;
 import com.example.finalgame.hero.Hero;
 import javafx.animation.TranslateTransition;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+
+import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class BuildingsAttack extends Thread {
     private Hero target;
    private DefensiveBuilding building;
    //private ImageView buildingView;
     private ImageView ray;
-   public BuildingsAttack(DefensiveBuilding building,ImageView ray){
+    private ArrayList<ImageView> heroes = new ArrayList<>();
+   public BuildingsAttack(DefensiveBuilding building,ImageView ray,ArrayList<ImageView>heroes){
         this.ray = ray;
         this.building  = building;
+        this.heroes = heroes;
     }
     @FXML
     public void run(){
@@ -49,5 +56,20 @@ public class BuildingsAttack extends Thread {
         }
         transition.setCycleCount(100);
         transition.play();
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                for (ImageView hero : heroes) {
+                    if (hero.getBoundsInParent().intersects(ray.getBoundsInParent()))
+                        ((Hero) hero.getImage()).setLevelOfHealth(((Hero) hero.getImage()).getLevelOfHealth() - 1);
+                    if (((Hero) hero.getImage()).getLevelOfHealth() == 0) {
+                        Platform.runLater(() -> HelloApplication.root.getChildren().remove(hero));
+                        heroes.remove(hero);
+                    }
+                    System.out.println("hero health " + ((Hero) hero.getImage()).getLevelOfHealth());
+                }
+
+            }} ,0,100*building.getLevelOfHealth());}
+
     }
-}

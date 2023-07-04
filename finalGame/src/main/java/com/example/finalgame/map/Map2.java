@@ -4,10 +4,7 @@ import com.example.finalgame.HelloApplication;
 import com.example.finalgame.building.Canon;
 import com.example.finalgame.building.OldCastle;
 import com.example.finalgame.drag.Draggable;
-import com.example.finalgame.hero.DarthVader;
-import com.example.finalgame.hero.Dragon;
-import com.example.finalgame.hero.StormTrooper;
-import com.example.finalgame.hero.Witch;
+import com.example.finalgame.hero.*;
 import com.example.finalgame.pages.AllHeroes;
 import com.example.finalgame.thread.BuildingsAttack;
 import com.example.finalgame.thread.MovingHeroes;
@@ -18,10 +15,14 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Map2 extends Map implements Initializable {
 
@@ -36,7 +37,8 @@ public class Map2 extends Map implements Initializable {
 
     @FXML
     private ImageView canonImage1;
-
+    @FXML
+    private Text determinationTxt = new Text();
     @FXML
     private ImageView canonImage2;
 
@@ -71,11 +73,12 @@ public class Map2 extends Map implements Initializable {
     //=================================================================================
     public static ArrayList<Thread> threads = new ArrayList<>();
     public static ArrayList<ImageView>buildings = new ArrayList<>();
-
+    public static ArrayList<ImageView>heroes = new ArrayList<>();
     @FXML
     void arrangeHeroes(ActionEvent event) {
         for(int i = 0; i< AllHeroes.getStormCounter(); i++){
             imageView = new ImageView();
+            heroes.add(imageView);
             StormTrooper stormTrooper = new StormTrooper();
             imageView.setImage(stormTrooper);
             ImageView fireView = new ImageView();
@@ -96,6 +99,7 @@ public class Map2 extends Map implements Initializable {
         }
         for(int i = 0;i<AllHeroes.getDarthCounter();i++){
             imageView = new ImageView();
+            heroes.add(imageView);
             DarthVader darthVader = new DarthVader();
             imageView.setImage(darthVader);
             ImageView fireView = new ImageView();
@@ -116,6 +120,7 @@ public class Map2 extends Map implements Initializable {
         }
         for(int i = 0;i<AllHeroes.getDragonCounter();i++){
             imageView = new ImageView();
+            heroes.add(imageView);
             Dragon dragon = new Dragon();
             imageView.setImage(dragon);
             ImageView fireView = new ImageView(dragon.getFire());
@@ -135,6 +140,7 @@ public class Map2 extends Map implements Initializable {
         }
         for(int i = 0;i<AllHeroes.getWitchCounter();i++){
             imageView = new ImageView();
+            heroes.add(imageView);
             Witch witch = new Witch();
             imageView.setImage(witch);
             ImageView fireView = new ImageView();//***********************
@@ -157,7 +163,11 @@ public class Map2 extends Map implements Initializable {
 
     @FXML
     void back(ActionEvent event) {
-
+        try {
+            new HelloApplication().changeScene("allHeroes.fxml");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML
@@ -184,6 +194,19 @@ public class Map2 extends Map implements Initializable {
             throw new RuntimeException(e);
         }
         attack3.start();
+        //****************** determination *******************
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                if(heroes.size()==0) {
+                    determinationTxt.setText("You lost");
+                }
+                if(buildings.size()==0){
+                    determinationTxt.setText("You won");
+                }
+            }
+        },0,1000);
     }
     public static Map2 getMap2()
     {
@@ -208,9 +231,9 @@ public class Map2 extends Map implements Initializable {
         getBuildings().add(canon2);
         getBuildings().add(canon3);
         //**********************************
-        attack = new BuildingsAttack(canon1,blackBall1);
-        attack2 = new BuildingsAttack(canon2,blackBall2);
-        attack3 = new BuildingsAttack(canon3,blackBall3);
+        attack = new BuildingsAttack(canon1,blackBall1,heroes);
+        attack2 = new BuildingsAttack(canon2,blackBall2,heroes);
+        attack3 = new BuildingsAttack(canon3,blackBall3,heroes);
         //***********************************
         buildings.add(canonImage1);
         buildings.add(canonImage3);
