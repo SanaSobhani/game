@@ -1,8 +1,11 @@
 package com.example.finalgame.thread;
 
+import com.example.finalgame.HelloApplication;
 import com.example.finalgame.building.Building;
 import com.example.finalgame.hero.*;
 import javafx.animation.TranslateTransition;
+import javafx.application.Platform;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 
@@ -13,11 +16,13 @@ public class MovingHeroes extends Thread{
     private Hero hero;
     private ArrayList<ImageView>buildings = new ArrayList<>();
     private ImageView target;
-   public MovingHeroes(ImageView imageView, Hero hero,ArrayList<ImageView>buildings){
+    private ImageView fire;
+   public MovingHeroes(ImageView imageView, Hero hero,ArrayList<ImageView>buildings,ImageView fire){
         this.imageView= new ImageView();
         this.hero = hero;
         this.imageView = imageView;
         this.buildings = buildings;
+        this.fire = fire;
     }
     @Override
     public void run(){
@@ -25,31 +30,55 @@ public class MovingHeroes extends Thread{
         transition.setNode(imageView);
         findingClosest();
         if(hero instanceof Dragon) {
-            transition.setDuration(Duration.millis(500));
-            transition.setToX(target.getLayoutX());
-            transition.setToY(200);
+            imageView.setLayoutX(target.getLayoutX()+100);
+            imageView.setLayoutY(target.getLayoutY()-90);
+            fire.setLayoutY(imageView.getLayoutY()+55);
+            fire.setLayoutX(imageView.getLayoutX()+76);
+            TranslateTransition fireTransition = new TranslateTransition();
+            fireTransition.setNode(fire);
+            fireTransition.setByX(200);
+            fireTransition.setByY(200);
+            fireTransition.setCycleCount(100);
+            fireTransition.play();
         }
         if(hero instanceof Witch){
-            transition.setDuration(Duration.millis(900));
-            transition.setToX(target.getLayoutX()+110);
-            transition.setToY(target.getLayoutY()+20);
+            imageView.setLayoutX(target.getLayoutX()+110);
+            imageView.setLayoutY(target.getLayoutY()-90);
+            fire.setLayoutY(imageView.getLayoutY()+60);
+            fire.setLayoutX(imageView.getLayoutX()-50);
+            TranslateTransition fireTransition = new TranslateTransition();
+            fireTransition.setNode(fire);
+            fireTransition.setByX(-200);
+            fireTransition.setByY(100);
+            fireTransition.setCycleCount(100);
+            fireTransition.play();
         }
         if(hero instanceof DarthVader)
         {
-            transition.setDuration(Duration.seconds(1));
-            transition.setToX(target.getLayoutX()+100);
-            transition.setToY(target.getLayoutY()+20);
+            imageView.setLayoutX(target.getLayoutX()+200);
+            imageView.setLayoutY(target.getLayoutY()-70);
+            fire.setLayoutY(imageView.getLayoutY()+60);
+            fire.setLayoutX(imageView.getLayoutX()-50);
+            TranslateTransition fireTransition = new TranslateTransition();
+            fireTransition.setNode(fire);
+            fireTransition.setByX(-200);
+            fireTransition.setByY(0);
+            fireTransition.setCycleCount(100);
+            fireTransition.play();
         }
         if(hero instanceof StormTrooper ){
-            transition.setDuration(Duration.seconds(1.5));
-            System.out.println("lay out"+target.getLayoutX());
-            System.out.println("x"+target.getX());
-            System.out.println("translate "+target.getTranslateX());
-            transition.setToX((target.getLayoutX()+120));
-            transition.setToY(target.getLayoutY()+20);
+            imageView.setLayoutX(target.getLayoutX()+90);
+            imageView.setLayoutY(target.getLayoutY()-90);
+            fire.setLayoutY(imageView.getLayoutY()+30);
+            fire.setLayoutX(imageView.getLayoutX()-62);
+            TranslateTransition fireTransition = new TranslateTransition();
+            fireTransition.setNode(fire);
+            fireTransition.setByX(-100);
+            fireTransition.setByY(0);
+            fireTransition.setCycleCount(100);
+            fireTransition.play();
         }
-        transition.play();
-    }
+   }
     private void findingClosest(){
        double distance ;
        double minDistance = Double.MAX_VALUE;

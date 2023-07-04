@@ -11,6 +11,7 @@ import com.example.finalgame.hero.Dragon;
 import com.example.finalgame.hero.StormTrooper;
 import com.example.finalgame.hero.Witch;
 import com.example.finalgame.pages.AllHeroes;
+import com.example.finalgame.thread.AttackHeroes;
 import com.example.finalgame.thread.BuildingsAttack;
 import com.example.finalgame.thread.MovingHeroes;
 import javafx.event.ActionEvent;
@@ -84,20 +85,11 @@ public class Map3 extends Map implements Initializable {
             imageView = new ImageView();
             StormTrooper stormTrooper = new StormTrooper();
             imageView.setImage(stormTrooper);
-            MovingHeroes movingHeroes = new MovingHeroes(imageView,stormTrooper,this.buildings);
-            threads.add(movingHeroes);
-            imageView.setFitHeight(100);
-            imageView.setFitWidth(100);
-            imageView.setLayoutX(0);
-            imageView.setLayoutY(0);
-            HelloApplication.root.getChildren().add(imageView);
-            Draggable.makeDraggable(imageView);
-        }
-        for(int i = 0;i<AllHeroes.getDarthCounter();i++){
-            imageView = new ImageView();
-            DarthVader darthVader = new DarthVader();
-            imageView.setImage(darthVader);
-            MovingHeroes movingHeroes = new MovingHeroes(imageView,darthVader,this.buildings);
+            ImageView fireView = new ImageView();
+            fireView.setImage(stormTrooper.getFire());
+            fireView.setFitWidth(69);
+            fireView.setFitHeight(41);
+            MovingHeroes movingHeroes = new MovingHeroes(imageView,stormTrooper,this.buildings,fireView);
             threads.add(movingHeroes);
             imageView.setFitHeight(100);
             imageView.setFitWidth(100);
@@ -105,12 +97,38 @@ public class Map3 extends Map implements Initializable {
             imageView.setLayoutY(100);
             HelloApplication.root.getChildren().add(imageView);
             Draggable.makeDraggable(imageView);
+            HelloApplication.root.getChildren().add(fireView);
+            fireView.setLayoutY(imageView.getLayoutY()+30);
+            fireView.setLayoutX(imageView.getLayoutX()-79);
+        }
+        for(int i = 0;i<AllHeroes.getDarthCounter();i++){
+            imageView = new ImageView();
+            DarthVader darthVader = new DarthVader();
+            imageView.setImage(darthVader);
+            ImageView fireView = new ImageView();
+            fireView.setImage(darthVader.getFire());
+            fireView.setFitWidth(69);
+            fireView.setFitHeight(41);
+            MovingHeroes movingHeroes = new MovingHeroes(imageView,darthVader,this.buildings,fireView);
+            threads.add(movingHeroes);
+            imageView.setFitHeight(100);
+            imageView.setFitWidth(100);
+            imageView.setLayoutX(100);
+            imageView.setLayoutY(100);
+            HelloApplication.root.getChildren().add(imageView);
+            Draggable.makeDraggable(imageView);
+            HelloApplication.root.getChildren().add(fireView);
+            fireView.setLayoutY(imageView.getLayoutY()+62);
+            fireView.setLayoutX(imageView.getLayoutX()-79);
         }
         for(int i = 0;i<AllHeroes.getDragonCounter();i++){
             imageView = new ImageView();
             Dragon dragon = new Dragon();
             imageView.setImage(dragon);
-            MovingHeroes movingHeroes = new MovingHeroes(imageView,dragon,this.buildings);
+            ImageView fireView = new ImageView(dragon.getFire());
+            fireView.setFitWidth(69);
+            fireView.setFitHeight(41);
+            MovingHeroes movingHeroes = new MovingHeroes(imageView,dragon,this.buildings,fireView);
             threads.add(movingHeroes);
             imageView.setFitHeight(100);
             imageView.setFitWidth(100);
@@ -118,12 +136,19 @@ public class Map3 extends Map implements Initializable {
             imageView.setLayoutY(200);
             HelloApplication.root.getChildren().add(imageView);
             Draggable.makeDraggable(imageView);
+            HelloApplication.root.getChildren().add(fireView);
+            fireView.setLayoutY(imageView.getLayoutY()+57);
+            fireView.setLayoutX(imageView.getLayoutX()+76);
         }
         for(int i = 0;i<AllHeroes.getWitchCounter();i++){
             imageView = new ImageView();
             Witch witch = new Witch();
             imageView.setImage(witch);
-            MovingHeroes movingHeroes = new MovingHeroes(imageView,witch,this.buildings);
+            ImageView fireView = new ImageView();//***********************
+            fireView.setImage(witch.getFire());
+            fireView.setFitWidth(69);
+            fireView.setFitHeight(41);
+            MovingHeroes movingHeroes = new MovingHeroes(imageView,witch,this.buildings,fireView);
             threads.add(movingHeroes);
             imageView.setFitHeight(100);
             imageView.setFitWidth(100);
@@ -131,7 +156,10 @@ public class Map3 extends Map implements Initializable {
             imageView.setLayoutY(300);
             HelloApplication.root.getChildren().add(imageView);
             Draggable.makeDraggable(imageView);
-        }
+            HelloApplication.root.getChildren().add(fireView);
+            fireView.setLayoutY(imageView.getLayoutY()+62);
+            fireView.setLayoutX(imageView.getLayoutX()-79);
+         }
     }
 
     @FXML
@@ -149,9 +177,7 @@ public class Map3 extends Map implements Initializable {
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
-                System.out.println("*");
             }
-
         attack.start();
         try {
             Thread.sleep(100);

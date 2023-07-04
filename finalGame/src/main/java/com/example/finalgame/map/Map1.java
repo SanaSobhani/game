@@ -11,6 +11,7 @@ import com.example.finalgame.hero.StormTrooper;
 import com.example.finalgame.hero.Witch;
 import com.example.finalgame.pages.AllHeroes;
 import com.example.finalgame.thread.BuildingsAttack;
+import com.example.finalgame.thread.MovingHeroes;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -67,47 +68,88 @@ public class Map1 extends Map implements Initializable {
     private BuildingsAttack attack2;
     private BuildingsAttack attack3;
     //=========================================================================================
+    public static ArrayList<Thread> threads = new ArrayList<>();
+    public static ArrayList<ImageView>buildings = new ArrayList<>();
     @FXML
     void arrangeHeroes(ActionEvent event) {
         for(int i = 0; i< AllHeroes.getStormCounter(); i++){
             imageView = new ImageView();
-            imageView.setImage(new StormTrooper());
-            imageView.setFitHeight(100);
-            imageView.setFitWidth(100);
-            imageView.setLayoutX(0);
-            imageView.setLayoutY(0);
-            HelloApplication.root.getChildren().add(imageView);
-            Draggable.makeDraggable(imageView);
-        }
-        for(int i = 0;i<AllHeroes.getDarthCounter();i++){
-            imageView = new ImageView();
-            imageView.setImage(new DarthVader());
+            StormTrooper stormTrooper = new StormTrooper();
+            imageView.setImage(stormTrooper);
+            ImageView fireView = new ImageView();
+            fireView.setImage(stormTrooper.getFire());
+            fireView.setFitWidth(69);
+            fireView.setFitHeight(41);
+            MovingHeroes movingHeroes = new MovingHeroes(imageView,stormTrooper,this.buildings,fireView);
+            threads.add(movingHeroes);
             imageView.setFitHeight(100);
             imageView.setFitWidth(100);
             imageView.setLayoutX(100);
             imageView.setLayoutY(100);
             HelloApplication.root.getChildren().add(imageView);
             Draggable.makeDraggable(imageView);
+            HelloApplication.root.getChildren().add(fireView);
+            fireView.setLayoutY(imageView.getLayoutY()+30);
+            fireView.setLayoutX(imageView.getLayoutX()-79);
+        }
+        for(int i = 0;i<AllHeroes.getDarthCounter();i++){
+            imageView = new ImageView();
+            DarthVader darthVader = new DarthVader();
+            imageView.setImage(darthVader);
+            ImageView fireView = new ImageView();
+            fireView.setImage(darthVader.getFire());
+            fireView.setFitWidth(69);
+            fireView.setFitHeight(41);
+            MovingHeroes movingHeroes = new MovingHeroes(imageView,darthVader,this.buildings,fireView);
+            threads.add(movingHeroes);
+            imageView.setFitHeight(100);
+            imageView.setFitWidth(100);
+            imageView.setLayoutX(100);
+            imageView.setLayoutY(100);
+            HelloApplication.root.getChildren().add(imageView);
+            Draggable.makeDraggable(imageView);
+            HelloApplication.root.getChildren().add(fireView);
+            fireView.setLayoutY(imageView.getLayoutY()+62);
+            fireView.setLayoutX(imageView.getLayoutX()-79);
         }
         for(int i = 0;i<AllHeroes.getDragonCounter();i++){
             imageView = new ImageView();
-            imageView.setImage(new Dragon());
+            Dragon dragon = new Dragon();
+            imageView.setImage(dragon);
+            ImageView fireView = new ImageView(dragon.getFire());
+            fireView.setFitWidth(69);
+            fireView.setFitHeight(41);
+            MovingHeroes movingHeroes = new MovingHeroes(imageView,dragon,this.buildings,fireView);
+            threads.add(movingHeroes);
             imageView.setFitHeight(100);
             imageView.setFitWidth(100);
             imageView.setLayoutX(200);
             imageView.setLayoutY(200);
             HelloApplication.root.getChildren().add(imageView);
             Draggable.makeDraggable(imageView);
+            HelloApplication.root.getChildren().add(fireView);
+            fireView.setLayoutY(imageView.getLayoutY()+57);
+            fireView.setLayoutX(imageView.getLayoutX()+76);
         }
         for(int i = 0;i<AllHeroes.getWitchCounter();i++){
             imageView = new ImageView();
-            imageView.setImage(new Witch());
+            Witch witch = new Witch();
+            imageView.setImage(witch);
+            ImageView fireView = new ImageView();//***********************
+            fireView.setImage(witch.getFire());
+            fireView.setFitWidth(69);
+            fireView.setFitHeight(41);
+            MovingHeroes movingHeroes = new MovingHeroes(imageView,witch,this.buildings,fireView);
+            threads.add(movingHeroes);
             imageView.setFitHeight(100);
             imageView.setFitWidth(100);
             imageView.setLayoutX(300);
             imageView.setLayoutY(300);
             HelloApplication.root.getChildren().add(imageView);
             Draggable.makeDraggable(imageView);
+            HelloApplication.root.getChildren().add(fireView);
+            fireView.setLayoutY(imageView.getLayoutY()+62);
+            fireView.setLayoutX(imageView.getLayoutX()-79);
         }
 
     }
@@ -119,6 +161,15 @@ public class Map1 extends Map implements Initializable {
 
     @FXML
     void start(ActionEvent event) {
+        for(Thread pointer : threads)
+        {
+            pointer.start();
+            try {
+                Thread.sleep(200);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }
         attack.start();
         try {
             Thread.sleep(100);
@@ -155,6 +206,10 @@ public class Map1 extends Map implements Initializable {
         attack = new BuildingsAttack(watchTower1,redBall);
         attack2 = new BuildingsAttack(deathStar3,blueRay2);
         attack3 = new BuildingsAttack(deathStar,blueRay1);
+        //*******************************
+        buildings.add(deathStar1);
+        buildings.add(deathStar2);
+        buildings.add(watchTower);
     }
 }
 
