@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.effect.BoxBlur?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="ancherPane" prefHeight="561.0" prefWidth="956.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.finalgame.pages.AllMaps">
+   <children>
+      <ImageView fx:id="backGround" fitHeight="601.0" fitWidth="1044.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@backGround2.jpg" />
+         </image>
+         <effect>
+            <BoxBlur iterations="2" />
+         </effect>
+      </ImageView>
+      <Text fx:id="titleTxt" fill="#e1d0d0" layoutX="329.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose your map">
+         <font>
+            <Font name="Bodoni MT Bold Italic" size="36.0" />
+         </font>
+      </Text>
+      <ImageView fx:id="map2" fitHeight="71.0" fitWidth="113.0" layoutX="370.0" layoutY="87.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@moon-sky-night-background-asset-game-2d-futuristic-generative-ai.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="map1" fitHeight="71.0" fitWidth="113.0" layoutX="145.0" layoutY="90.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@sand-dunes-sahara-desert.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="map3" fitHeight="71.0" fitWidth="113.0" layoutX="593.0" layoutY="91.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@pngtree-beautiful-desert-night-scene-background-picture-image_2273560.jpg" />
+         </image>
+         <effect>
+            <BoxBlur height="0.0" />
+         </effect>
+      </ImageView>
+      <ImageView fx:id="map4" fitHeight="71.0" fitWidth="113.0" layoutX="824.0" layoutY="91.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@moon-surface-big-planet-background.jpg" />
+         </image>
+      </ImageView>
+      <Text fx:id="defensiveTxt" fill="#e1d0d0" layoutX="7.0" layoutY="267.0" strokeType="OUTSIDE" strokeWidth="0.0" text="defensive buildings :">
+         <font>
+            <Font name="Bodoni MT Bold Italic" size="17.0" />
+         </font>
+      </Text>
+      <Text fx:id="non_defensiveTxt" fill="#e1d0d0" layoutX="7.0" layoutY="363.0" strokeType="OUTSIDE" strokeWidth="0.0" text="non_defensive buildings :">
+         <font>
+            <Font name="Bodoni MT Bold Italic" size="16.0" />
+         </font>
+      </Text>
+      <Text fx:id="number4" fill="#ffd311" layoutX="403.0" layoutY="375.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1" underline="true">
+         <font>
+            <Font name="Bodoni MT Bold Italic" size="55.0" />
+         </font>
+      </Text>
+      <Text fx:id="number3" fill="#ffd311" layoutX="403.0" layoutY="278.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3" underline="true">
+         <font>
+            <Font name="Bodoni MT Bold Italic" size="55.0" />
+         </font>
+      </Text>
+      <Text fx:id="number2" fill="#ffd311" layoutX="201.0" layoutY="375.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1" underline="true">
+         <font>
+            <Font name="Bodoni MT Bold Italic" size="55.0" />
+         </font>
+      </Text>
+      <Text fx:id="numberr1" fill="#ffd311" layoutX="201.0" layoutY="279.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3" underline="true">
+         <font>
+            <Font name="Bodoni MT Bold Italic" size="55.0" />
+         </font>
+      </Text>
+      <Text fx:id="number5" fill="#ffd311" layoutX="636.0" layoutY="279.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4" underline="true">
+         <font>
+            <Font name="Bodoni MT Bold Italic" size="55.0" />
+         </font>
+      </Text>
+      <Text fx:id="number6" fill="#ffd311" layoutX="636.0" layoutY="374.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" underline="true">
+         <font>
+            <Font name="Bodoni MT Bold Italic" size="55.0" />
+         </font>
+      </Text>
+      <Text fx:id="number7" fill="#ffd311" layoutX="867.0" layoutY="289.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3" underline="true">
+         <font>
+            <Font name="Bodoni MT Bold Italic" size="55.0" />
+         </font>
+      </Text>
+      <Text fx:id="number8" fill="#ffd311" layoutX="867.0" layoutY="375.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" underline="true">
+         <font>
+            <Font name="Bodoni MT Bold Italic" size="55.0" />
+         </font>
+      </Text>
+      <Button fx:id="selectButton1" layoutX="162.0" layoutY="483.0" mnemonicParsing="false" onAction="#selection1" prefHeight="3.0" prefWidth="104.0" style="-fx-background-radius: 50; -fx-background-color: #e1d0d0;" text="select">
+         <font>
+            <Font name="Bodoni MT Bold Italic" size="17.0" />
+         </font>
+      </Button>
+      <Button fx:id="selectButton2" layoutX="370.0" layoutY="483.0" mnemonicParsing="false" onAction="#selection2" prefHeight="3.0" prefWidth="104.0" style="-fx-background-radius: 50; -fx-background-color: #e1d0d0;" text="select">
+         <font>
+            <Font name="Bodoni MT Bold Italic" size="17.0" />
+         </font>
+      </Button>
+      <Button fx:id="selectButton3" layoutX="598.0" layoutY="483.0" mnemonicParsing="false" onAction="#selection3" prefHeight="3.0" prefWidth="104.0" style="-fx-background-radius: 50; -fx-background-color: #e1d0d0;" text="select">
+         <font>
+            <Font name="Bodoni MT Bold Italic" size="17.0" />
+         </font>
+      </Button>
+      <Button fx:id="selectButton1" layoutX="829.0" layoutY="483.0" mnemonicParsing="false" onAction="#selection4" prefHeight="3.0" prefWidth="104.0" style="-fx-background-radius: 50; -fx-background-color: #e1d0d0;" text="select">
+         <font>
+            <Font name="Bodoni MT Bold Italic" size="17.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

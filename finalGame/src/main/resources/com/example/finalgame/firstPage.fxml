@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="382.0" prefWidth="729.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.finalgame.pages.FirstPage">
+   <children>
+      <ImageView fx:id="starsLogo" fitHeight="150.0" fitWidth="200.0" layoutX="61.0" layoutY="108.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Star_Wars_Logo.svg.png" />
+         </image>
+      </ImageView>
+      <Text fill="#ebeb05" layoutX="187.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="inspired by">
+         <font>
+            <Font name="Bodoni MT Bold Italic" size="65.0" />
+         </font>
+      </Text>
+      <ImageView fx:id="clashLogo" fitHeight="121.0" fitWidth="227.0" layoutX="457.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@logo3.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="sigUpButton" layoutX="419.0" layoutY="301.0" mnemonicParsing="false" onAction="#signUp" prefHeight="41.0" prefWidth="283.0" style="-fx-background-color: #ebeb05; -fx-background-radius: 100;" text="sign up">
+         <font>
+            <Font name="Bodoni MT Bold Italic" size="30.0" />
+         </font>
+      </Button>
+      <Button fx:id="logInButton" layoutX="20.0" layoutY="301.0" mnemonicParsing="false" onAction="#logIn" prefHeight="46.0" prefWidth="283.0" style="-fx-background-color: #ebeb05; -fx-background-radius: 100;" text="log in">
+         <font>
+            <Font name="Bodoni MT Bold Italic" size="30.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
